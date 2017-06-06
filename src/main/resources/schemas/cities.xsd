@@ -1,0 +1,47 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tutos="http://autentia.com/tutos/springboot/schema/cities"
+	targetNamespace="http://autentia.com/tutos/springboot/schema/cities"
+	elementFormDefault="qualified">
+
+	<xs:complexType name="City">
+		<xs:sequence>
+			<xs:element name="code" type="xs:long" />
+			<xs:element name="name" type="xs:string" />
+            <xs:element name="country" type="xs:string" />
+			<xs:element name="population" type="xs:long" />
+			<xs:element name="founded" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="getCityByCodeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="code" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getCityByCodeResponse">
+		<xs:complexType>
+			<xs:sequence>
+                <xs:element name="city" type="tutos:City" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addCityRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="city" type="tutos:City" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addCityResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="code" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

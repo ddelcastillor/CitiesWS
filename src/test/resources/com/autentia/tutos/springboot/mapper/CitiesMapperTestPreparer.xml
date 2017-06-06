@@ -1,0 +1,10 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.autentia.tutos.springboot.mapper.CitiesMapperTestPreparer">
+
+	<insert id="mockCity">
+		INSERT INTO CIUDAD (NAME, COUNTRY,CODE,POPULATION,FOUNDED) 
+		VALUES
+		(#{name},#{country},#{code},#{population},#{founded})
+	</insert>	
+</mapper>

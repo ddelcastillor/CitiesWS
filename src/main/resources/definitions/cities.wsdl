@@ -1,0 +1,106 @@
+
+This XML file does not appear to have any style information associated
+with it. The document tree is shown below.
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://autentia.com/tutos/springboot/schema/cities"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://autentia.com/tutos/springboot/schema/cities"
+	targetNamespace="http://autentia.com/tutos/springboot/schema/cities">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:tutos="http://autentia.com/tutos/springboot/schema/cities"
+			targetNamespace="http://autentia.com/tutos/springboot/schema/cities"
+			elementFormDefault="qualified">
+
+			<xs:complexType name="City">
+				<xs:sequence>
+					<xs:element name="code" type="xs:long" />
+					<xs:element name="name" type="xs:string" />
+					<xs:element name="country" type="xs:string" />
+					<xs:element name="population" type="xs:long" />
+					<xs:element name="founded" type="xs:long" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:element name="getCityByCodeRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="getCityByCodeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="city" type="tutos:City" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="addCityRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="city" type="tutos:City" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="addCityResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="addCityRequest">
+		<wsdl:part element="tns:addCityRequest" name="addCityRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCityByCodeRequest">
+		<wsdl:part element="tns:getCityByCodeRequest" name="getCityByCodeRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addCityResponse">
+		<wsdl:part element="tns:addCityResponse" name="addCityResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCityByCodeResponse">
+		<wsdl:part element="tns:getCityByCodeResponse" name="getCityByCodeResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="Cities">
+		<wsdl:operation name="addCity">
+			<wsdl:input message="tns:addCityRequest" name="addCityRequest"></wsdl:input>
+			<wsdl:output message="tns:addCityResponse" name="addCityResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCityByCode">
+			<wsdl:input message="tns:getCityByCodeRequest" name="getCityByCodeRequest"></wsdl:input>
+			<wsdl:output message="tns:getCityByCodeResponse" name="getCityByCodeResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CitiesSoap12" type="tns:Cities">
+		<soap12:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="addCity">
+			<soap12:operation soapAction="" />
+			<wsdl:input name="addCityRequest">
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="addCityResponse">
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getCityByCode">
+			<soap12:operation soapAction="" />
+			<wsdl:input name="getCityByCodeRequest">
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getCityByCodeResponse">
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CitiesService">
+		<wsdl:port binding="tns:CitiesSoap12" name="CitiesSoap12">
+			<soap12:address location="/ws/cities" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

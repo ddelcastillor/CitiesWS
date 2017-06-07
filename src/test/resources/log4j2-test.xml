@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30" status="WARN">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <Properties>
+        <Property name="logPattern">%d %p %t %c %X{REMOTE_IP} %m%n</Property>
+        <Property name="maxFileLogDuration">60d</Property>
+        <Property name="fileSizeRolling">10 MB</Property>
+        <Property name="fileLogDir">target</Property>    
+    </Properties>
+    <Appenders>
+
+        <!-- TRAZAS DE SISTEMA -->
+        <RollingRandomAccessFile name="LogRoutingAppender"
+                                 fileName="${fileLogDir}/scheduler/traces.log" filePattern="${fileLogDir}/scheduler/traces-%d{yyyy-MM-dd-HH}-%i.log">
+            <Filters>
+                <MarkerFilter marker="AUDIT" onMatch="DENY" onMismatch="ACCEPT" />
+            </Filters>
+            <PatternLayout pattern="${logPattern}" />
+            <Policies>
+                <SizeBasedTriggeringPolicy size="${fileSizeRolling}" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${fileLogDir}" maxDepth="3">
+                    <IfFileName glob="*/traces-*.log" />
+                    <IfLastModified age="${maxFileLogDuration}" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+
+        <Async name="Async">
+            <AppenderRef ref="LogRoutingAppender" />
+        </Async>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="com.autentia.tutos" level="INFO" additivity="false">
+            <AppenderRef ref="Async" />
+        </Logger>
+
+        <Root level="INFO">
+            <AppenderRef ref="Async" />
+        </Root>
+
+    </Loggers>
+
+</Configuration>

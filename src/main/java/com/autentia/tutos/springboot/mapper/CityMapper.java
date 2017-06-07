@@ -15,4 +15,6 @@ public interface CityMapper {
 
 	City getCityByCode(@Param("code") long code);
 
+	long deleteByCode(@Param("code") long code);
+
 }

@@ -26,6 +26,12 @@
 		#{population},
 		#{founded});
 	</insert>
+	
+	<delete id="deleteByCode">
+		DELETE
+		FROM `mysql`.`CIUDAD`
+		WHERE CODE=#{code};
+	</delete>
 
 	<resultMap id="cityResultMap"
 		type="com.autentia.tutos.springboot.schema.cities.City">

@@ -20,6 +20,10 @@ public class CityService{
     public City getCityByCode(long code) {
         return cityRepository.findCityByCode(code);
     }
+    
+    public long deleteCityByCode(long code) {
+        return cityRepository.deleteByCode(code);
+    }
  
 
 	public long addCity(City city) {

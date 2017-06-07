@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="b391e34e-c3c8-49b7-bc6c-03c6b38349fa" activeEnvironment="Default" name="cities" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="75c1ccc8-da63-4475-b5d6-076ec8661554" wsaVersion="NONE" name="CitiesSoap12" type="wsdl" bindingName="{http://autentia.com/tutos/definitions}CitiesSoap12" soapVersion="1_2" anonymous="optional" definition="http://localhost:10000/ws/cities.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:10000/ws/cities.wsdl"><con:part><con:url>http://localhost:10000/ws/cities.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://autentia.com/tutos/definitions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://autentia.com/tutos/springboot/schema/cities" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://autentia.com/tutos/definitions">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://autentia.com/tutos/springboot/schema/cities" xmlns:tutos="http://autentia.com/tutos/springboot/schema/cities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="City">
+        <xs:sequence>
+          <xs:element name="code" type="xs:long"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="country" type="xs:string"/>
+          <xs:element name="population" type="xs:long"/>
+          <xs:element name="founded" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getCityByCodeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="code" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCityByCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="city" type="tutos:City"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addCityRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="city" type="tutos:City"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addCityResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="code" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addCityRequest">
+    <wsdl:part element="sch:addCityRequest" name="addCityRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCityByCodeRequest">
+    <wsdl:part element="sch:getCityByCodeRequest" name="getCityByCodeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCityResponse">
+    <wsdl:part element="sch:addCityResponse" name="addCityResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCityByCodeResponse">
+    <wsdl:part element="sch:getCityByCodeResponse" name="getCityByCodeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Cities">
+    <wsdl:operation name="addCity">
+      <wsdl:input message="tns:addCityRequest" name="addCityRequest"></wsdl:input>
+      <wsdl:output message="tns:addCityResponse" name="addCityResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCityByCode">
+      <wsdl:input message="tns:getCityByCodeRequest" name="getCityByCodeRequest"></wsdl:input>
+      <wsdl:output message="tns:getCityByCodeResponse" name="getCityByCodeResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CitiesSoap12" type="tns:Cities">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addCity">
+      <soap12:operation soapAction=""/>
+      <wsdl:input name="addCityRequest">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCityResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCityByCode">
+      <soap12:operation soapAction=""/>
+      <wsdl:input name="getCityByCodeRequest">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCityByCodeResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CitiesService">
+    <wsdl:port binding="tns:CitiesSoap12" name="CitiesSoap12">
+      <soap12:address location="/ws/cities"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>/ws/cities</con:endpoint></con:endpoints><con:operation id="13b6258a-0b87-4298-9e1b-5f8ec556d89d" isOneWay="false" action="" name="addCity" bindingOperationName="addCity" type="Request-Response" outputName="addCityResponse" inputName="addCityRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation><con:operation id="33cc0d61-3bc8-4e54-80f5-c464f2524723" isOneWay="false" action="" name="getCityByCode" bindingOperationName="getCityByCode" type="Request-Response" outputName="getCityByCodeResponse" inputName="getCityByCodeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation></con:interface><con:testSuite id="1f54324f-c1c4-425d-930f-5ef00f522658" name="Tuto_CitiesWS"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="7172d3a8-3477-4739-a096-bad05fd01b71" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase OK" searchProperties="true"><con:settings/><con:testStep type="request" name="nuevaCiudad" id="a831d6fb-27d1-4d60-a2ae-c4ef455cb159"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>addCity</con:operation><con:request name="nuevaCiudad" id="d76c89c2-3195-44e1-9870-b235680c5b10"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:addCityRequest>
+         <cit:city>
+            <cit:code>28831</cit:code>
+            <cit:name>SanFer2</cit:name>
+            <cit:country>Spain</cit:country>
+            <cit:population>10</cit:population>
+            <cit:founded>1990</cit:founded>
+         </cit:city>
+      </cit:addCityRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dbf7f4b5-5603-408a-b0df-d7c26b41ee02"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="consultaCorrecta" id="68f73e45-1e18-4073-8a02-0239aea4978e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>getCityByCode</con:operation><con:request name="consultaCorrecta" id="4078d714-6adb-4361-88db-356a25152717"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:getCityByCodeRequest>
+         <cit:code>28831</cit:code>
+      </cit:getCityByCodeRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9e99a80d-dfc8-483c-abba-49ffb3953ad9"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d098bba0-27e6-41dd-82d2-2440ee72e2b7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase KO" searchProperties="true"><con:settings/><con:testStep type="request" name="ciudadExiste" id="529df939-9eb5-40cf-ae32-52f06a005356"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>addCity</con:operation><con:request name="ciudadExiste" id="d76c89c2-3195-44e1-9870-b235680c5b10"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:addCityRequest>
+         <cit:city>
+            <cit:code>28850</cit:code>
+            <cit:name>Torrejon de Ardoz</cit:name>
+            <cit:country>Spain</cit:country>
+            <cit:population>10000</cit:population>
+            <cit:founded>1900</cit:founded>
+         </cit:city>
+      </cit:addCityRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dbf7f4b5-5603-408a-b0df-d7c26b41ee02"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="consultaIncorrecta" id="713e0994-07f6-4170-9ca5-340c3fa6e1e5"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>getCityByCode</con:operation><con:request name="consultaIncorrecta" id="4078d714-6adb-4361-88db-356a25152717"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:getCityByCodeRequest>
+         <cit:code>0</cit:code>
+      </cit:getCityByCodeRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9e99a80d-dfc8-483c-abba-49ffb3953ad9"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0e8e97e1-646f-40a8-8109-e135b633e376" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase IC" searchProperties="true"><con:settings/><con:testStep type="request" name="nuevaCiudad" id="bdb173c4-7f07-47c1-9c2a-0e8233d4f9aa"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>addCity</con:operation><con:request name="nuevaCiudad" id="d76c89c2-3195-44e1-9870-b235680c5b10"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:addCityRequest>
+         <cit:city>
+            <cit:code>1</cit:code>
+            <cit:name>TomorrowLand</cit:name>
+            <cit:country>Chiquitistan</cit:country>
+            <cit:population>1</cit:population>
+            <cit:founded>1</cit:founded>
+         </cit:city>
+      </cit:addCityRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dbf7f4b5-5603-408a-b0df-d7c26b41ee02"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="delay" name="Delay" id="a40afab3-7b6c-4f37-b93f-ec0610dd0659"><con:settings/><con:config><delay>10000</delay></con:config></con:testStep><con:testStep type="transfer" name="cityCode" id="b0d80176-e560-4c49-a1c5-990c13aabcdf"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>TransferCityCode</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>nuevaCiudad</con:sourceStep><con:sourcePath>declare namespace ns2="http://autentia.com/tutos/springboot/schema/cities"
+//ns2:addCityResponse/ns2:code</con:sourcePath><con:targetType>Request</con:targetType><con:targetStep>consultaCorrecta</con:targetStep><con:targetPath>declare namespace cit="http://autentia.com/tutos/springboot/schema/cities"
+//cit:getCityByCodeRequest/cit:code</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" name="consultaCorrecta" id="d07afca2-fc00-4420-b33a-78be0ed3f6c0"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>getCityByCode</con:operation><con:request name="consultaCorrecta" id="4078d714-6adb-4361-88db-356a25152717"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:getCityByCodeRequest>
+         <cit:code>1</cit:code>
+      </cit:getCityByCodeRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9e99a80d-dfc8-483c-abba-49ffb3953ad9"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="472d2d69-a447-4b34-8e99-f8c86fa13429" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase CIC" searchProperties="true"><con:settings/><con:testStep type="request" name="consultaNoExiste" id="340b2827-0ace-4ba8-b3e9-e024581d4294"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>getCityByCode</con:operation><con:request name="consultaNoExiste" id="4078d714-6adb-4361-88db-356a25152717"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:getCityByCodeRequest>
+         <cit:code>666</cit:code>
+      </cit:getCityByCodeRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9e99a80d-dfc8-483c-abba-49ffb3953ad9"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="delay" name="Delay1" id="55bbb5a5-7ff8-4c8d-9827-29189264f295"><con:settings/><con:config><delay>10000</delay></con:config></con:testStep><con:testStep type="request" name="nuevaCiudad" id="ec6ef50a-e22b-45c8-b45d-f22f6044d35e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>addCity</con:operation><con:request name="nuevaCiudad" id="d76c89c2-3195-44e1-9870-b235680c5b10"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:addCityRequest>
+         <cit:city>
+            <cit:code>666</cit:code>
+            <cit:name>Un concierto de Bisbal</cit:name>
+            <cit:country>El infierno</cit:country>
+            <cit:population>1</cit:population>
+            <cit:founded>1</cit:founded>
+         </cit:city>
+      </cit:addCityRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dbf7f4b5-5603-408a-b0df-d7c26b41ee02"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="delay" name="Delay2" id="c22444a6-8f0e-430e-8353-486d23560445"><con:settings/><con:config><delay>10000</delay></con:config></con:testStep><con:testStep type="transfer" name="cityCode" id="eea752cd-df64-4006-918f-2423d1950632"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>TransferCityCode</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>nuevaCiudad</con:sourceStep><con:sourcePath>declare namespace ns2="http://autentia.com/tutos/springboot/schema/cities"
+//ns2:addCityResponse/ns2:code</con:sourcePath><con:targetType>Request</con:targetType><con:targetStep>consultaCorrecta</con:targetStep><con:targetPath>declare namespace cit="http://autentia.com/tutos/springboot/schema/cities"
+//cit:getCityByCodeRequest/cit:code</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" name="consultaCorrecta" id="5b4efe40-f6d6-4576-82a5-2a6268bed6c5"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CitiesSoap12</con:interface><con:operation>getCityByCode</con:operation><con:request name="consultaCorrecta" id="4078d714-6adb-4361-88db-356a25152717"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:10000/ws/cities</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cit="http://autentia.com/tutos/springboot/schema/cities">
+   <soap:Header/>
+   <soap:Body>
+      <cit:getCityByCodeRequest>
+         <cit:code>666</cit:code>
+      </cit:getCityByCodeRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9e99a80d-dfc8-483c-abba-49ffb3953ad9"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

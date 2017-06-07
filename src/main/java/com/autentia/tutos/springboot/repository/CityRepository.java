@@ -38,4 +38,9 @@ public class CityRepository {
 		return cityMapper.getCityByCode(code);
 	}
 
+	public long deleteByCode(long code) {
+		cityMapper.deleteByCode(code);
+		return code;
+	}
+
 }
